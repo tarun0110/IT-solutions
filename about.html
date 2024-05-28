@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://rawcdn.githack.com/SochavaAG/example-mycode/master/_common/css/reset.css" rel="stylesheet"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./collapsing_cards.css">
+    <link rel="stylesheet" href="./test2.css">
+    <title>IT Company Landing Page</title>
+</head>
+
+<body>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        
+
+        .text-column {
+            padding: 20px;
+        }
+        .grid-column {
+            display: flex;
+            align-items: stretch;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            /* padding: 20px; */
+            grid-auto-rows: 1fr; /* Ensures all rows are of equal height */
+
+            width: 100%;
+        }
+    
+        h4{
+            font-size: x-large;
+            font-weight: bold;
+            padding-bottom: 20px;
+        }
+
+        .grid-item {
+        
+            border-radius: 15px;
+            margin: 0;
+
+
+            background-color: #834c4c;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .ag-courses-item_title2{
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .text-column,
+            .grid-column {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .text-column,
+            .grid-column {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .text-column {
+                margin-bottom: 20px;
+            }
+        }
+        .mainPhoto{
+            background-image: url(https://www.benchmarksolution.com/images/about/about_us_banner.jpg) !important;
+            width: 100%;
+            height: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .row{
+            margin: 5%;
+            font-family: Monospace, Helvetica, sans-serif;
+        }
+
+        .container-2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch; /* Ensure columns have equal height */
+    }
+
+    .column-2 {
+        flex: 1; /* Each column takes equal space */
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Gap between cards */
+        /* background-color: antiquewhite; */
+        padding: 1%;
+    }
+
+    .card {
+        /* width: 200px; */
+        background-color: #674C82; /* Card background color */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+        padding: 20px;
+        color: white;
+        text-align: left;
+        font-family: Monospace, Helvetica, sans-serif;
+        padding: 25px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    .card-1{
+        min-height: 400px;
+    }
+
+    .card-2{
+        min-height: 190px;
+    }
+
+    @media screen and (max-width: 786px) {
+        .container-2 {
+            flex: 1; /* Each column takes equal space */
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Gap between cards */
+        
+        }
+        .card{
+            height: fit-content;
+        }
+    }
+        
+    </style>
+   
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="/Users/tarungarg/Documents/IT-solutions/test2.html" class="logo">Benchmark IT Solutions</a>
+            <button class="navbar-toggle" id="navbar-toggle">&#9776;</button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/Users/tarungarg/Documents/IT-solutions/test2.html">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li class="dropdown">
+                    <a href="#">Solutions</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">Security Solutions</a></li>
+                        <li><a href="#">Data Management</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Users/tarungarg/Documents/IT-solutions/about.html">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainPhoto">
+            <div class="container-title">
+            <h1 class="testimonial-title">About Us</h1>
+            <span style="font-family: Monospace, Helvetica, sans-serif; color: black;">IT Solutions</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="https://assets-global.website-files.com/6436acda0d5bc8518eca551a/64672c57031e2f102ad0a69a_Group%20photp-p-2600.webp" style="border-radius: 15px;">
+        </div>
+        <div class="col-md-6">
+            <h4>Who Are We</h4>
+            <p>Benchmark Computer Solutions Limited is an IT infrastructure solutions and technology consulting company. We harness the power of cognitive computing, automation, cloud, analytics and emerging technologies to help our clients adapt to the digital world and make them successful. A company recognized for its comprehensive portfolio of products, strong relationships and excellent customer service.</p>
+            <p>Our technology products and services are built on 25 years of innovation, a strong culture of invention and a relentless focus on customer relationships. Founded in 1995, our unique heritage gives us real-world expertise to solve the most complex IT challenges of enterprises across all industries.</p>
+            <p>Our technology products and services are built on 25 years of innovation, a strong culture of invention and a relentless focus on customer relationships. Founded in 1995, our unique heritage gives us real-world expertise to solve the most complex IT challenges of enterprises across all industries.</p>
+        </div>
+    </div>
+
+    <div class="row">
+    
+        <div class="col-md-6">
+            <h4>What Do We Do</h4>
+            <p>Voluptate laborum enim fugiat Lorem deserunt nulla culpa est incididunt officia magna. Eu non exercitation nisi anim dolor excepteur aute enim pariatur incididunt mollit veniam eiusmod. Ex incididunt proident quis voluptate ea. Sunt do proident ut elit est sit culpa excepteur reprehenderit adipisicing cupidatat voluptate eiusmod. Nulla minim mollit ad non Lorem do proident eu ea deserunt. Culpa non ut fugiat consequat veniam.</p>
+            <p>Voluptate laborum enim fugiat Lorem deserunt nulla culpa est incididunt officia magna. Eu non exercitation nisi anim dolor excepteur aute enim pariatur incididunt mollit veniam eiusmod. Ex incididunt proident quis voluptate ea. Sunt do proident ut elit est sit culpa excepteur reprehenderit adipisicing cupidatat voluptate eiusmod. Nulla minim mollit ad non Lorem do proident eu ea deserunt. Culpa non ut fugiat consequat veniam.</p>
+        </div>
+        <div class="col-md-6 grid-column">
+            <div class="grid-container">
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2"> Hardware Product</div>
+                </div>
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2"> Software Development</div>
+                </div>
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2"> IOT Solutions</div>
+                </div>
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2"> Infrastructure</div>
+                </div>
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2">Virtualization </div>
+                </div>
+                <div class="grid-item ag-courses-item_link ag-courses_item">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title2"> Software Product</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col">
+            <img src="https://wysetek.com/wp-content/uploads/2021/07/Who-we-are2-01-min.png">
+        </div> -->
+    </div>
+
+    <!-- <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 text-column">
+                <h2>Our Services</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis.</p>
+                <p>Vestibulum et arcu felis. Maecenas at sodales lectus, non cursus magna.</p>
+                <p>Proin eget ex id libero ultricies sagittis. Donec auctor, tortor a varius semper, est ligula molestie felis.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis.</p>
+                <p>Vestibulum et arcu felis. Maecenas at sodales lectus, non cursus magna.</p>
+                <p>Proin eget ex id libero ultricies sagittis. Donec auctor, tortor a varius semper, est ligula molestie felis.</p>
+            </div>
+            <div class="col-md-6 grid-column">
+                <div class="grid-container">
+                    <div class="grid-item">Hardware</div>
+                    <div class="grid-item">Software</div>
+                    <div class="grid-item">IOT Solutions</div>
+                    <div class="grid-item">Cloud Services</div>
+                    <div class="grid-item">Cybersecurity</div>
+                    <div class="grid-item">Consulting</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row" style="background-color: #834c4c; height: 200px; background-image: url(https://infikeytechnologies.com/wp-content/uploads/2023/07/customer-service-staff-team-in-call-center-.jpg);background-position: center center;
+    background-repeat: no-repeat;
+     background-attachment: fixed;">
+        <div class="col" >
+
+        </div>
+    </div>
+
+    <div class="container-2">
+        <div class="column-2">
+            <div class="card card-1">
+               <h4>What we Offer</h4>
+               <p>Benchmark Computer Solutions Limited is an IT infrastructure solutions and technology consulting company. We harness the power of cognitive computing, automation, cloud, analytics and emerging technologies to help our clients adapt to the digital world and make them successful. A company recognized for its comprehensive portfolio of products, strong relationships and excellent customer service,  strong relationships and excellent customer service,  strong relationships and excellent customer service.</p>
+               
+            </div>
+        </div>
+        <div class="column-2">
+            <div class="card card-2">
+                 <h4>Our Mission</h4>
+               <p>Benchmark Computer Solutions Limited is an IT infrastructure solutions and technology consulting company.</p>
+            </div>
+            <div class="card card-2">
+                 <h4>Our Vision</h4>
+               <p>Benchmark Computer Solutions Limited is an IT infrastructure solutions and technology consulting company. </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-menu">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Solutions</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>123 Main Street<br>City, State, ZIP<br>Country</p>
+                    <p>Email: info@example.com<br>Phone: 123-456-7890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+
+
+        // Toggle the mobile menu
+        document.getElementById("navbar-toggle").addEventListener("click", function () {
+            var navMenu = document.getElementById("nav-menu");
+            navMenu.classList.toggle("active");
+            console.log('toggle');
+            document.getElementById('main').classList.toggle('showNavbar');
+        });
+
+        // Get all elements with class "flip"
+        var divs = document.querySelectorAll('.flip-container');
+
+        divs.forEach(function (div) {
+            div.addEventListener('click', function () {
+                // Toggle "hover" class for the clicked div
+                div.classList.toggle('hover');
+                // Remove "hover" class from other divs
+                divs.forEach(function (otherDiv) {
+                    if (otherDiv !== div) {
+                        otherDiv.classList.remove('hover');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="./test2.js"></script>
+    <script src="./fluid_design.js"></script>
+</body>
+
+</html>
